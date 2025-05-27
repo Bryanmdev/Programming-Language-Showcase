@@ -1,8 +1,5 @@
 # Programming Language Showcase
 
-![Capa do Projeto - Exemplo de visualização mobile e desktop (Substituir por uma imagem real do seu projeto)](./assets/project-cover.png)
-*(Recomendação: Crie uma imagem de capa atrativa que mostre o projeto em diferentes telas para colocar aqui!)*
-
 ## 🚀 Sobre o Projeto
 
 Este é um projeto interativo de uma landing page que funciona como uma vitrine de linguagens de programação. Desenvolvido com HTML, CSS e JavaScript puro, o objetivo é demonstrar habilidades de desenvolvimento Front-end, como manipulação do DOM, design responsivo, uso de pseudo-elementos e transições CSS, além de uma boa organização de código. O usuário pode navegar entre diferentes linguagens de programação, visualizando suas descrições e características principais de forma dinâmica.
