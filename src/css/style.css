@@ -1,62 +1,85 @@
+:root {
+    /* Cores */
+    --cor-fundo-principal: #000000;
+    --cor-texto-principal: #ffffff;
+    --cor-gradiente-transparente: rgba(0, 0, 0, 0); /* Transparente */
+    --cor-gradiente-opaco: #000; /* Preto opaco */
+    --cor-botoes-fundo: rgba(0, 0, 0, 0.3);
+    --cor-sombra-padrao: #d9d9d9;
+
+    /* Sombras das Linguagens (com base na nossa conversa anterior) */
+    --sombra-javascript: #F7DF1E;
+    --sombra-python: #3776AB;
+    --sombra-react: #61DAFB;
+    --sombra-nodejs: #68A063;
+    --sombra-csharp: #9B4F96;
+    --sombra-sql: #F29111;
+
+    /* Tamanhos e Espaçamentos Comuns */
+    --gap-botoes: 16px;
+    --padding-conteudo-desktop: 30px;
+    --padding-conteudo-left: 120px;
+}
+
 body {
-    background-color: #000000;
+    background-color: var(--cor-fundo-principal); /* Usando variável */
     overflow: hidden;
-  }
-  
-  main::after {
+}
+
+main::after {
     content: "";
     position: fixed;
     top: 0;
     left: 0;
     min-height: 100vh;
     width: 80vh;
-    background: linear-gradient(92deg, #000 25%, rgba(0, 0, 0, 0) 75%) no-repeat;
-  }
-  
-  main .personagem {
+    background: linear-gradient(92deg, var(--cor-gradiente-opaco) 25%, var(--cor-gradiente-transparente) 75%) no-repeat; /* Usando variáveis */
+}
+
+main .personagem {
     display: none;
     height: 100vh;
-  }
-  
-  main .personagem.selecionado {
+}
+
+main .personagem.selecionado {
     display: block;
-  }
-  
-  main .personagem .imagem {
+}
+
+main .personagem .imagem {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  
-  .conteudo {
+}
+
+.conteudo {
     position: absolute;
     top: 0;
-    left: 120px;
+    left: var(--padding-conteudo-left); /* Usando variável */
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100vh;
     max-width: 380px;
     z-index: 1;
-  }
-  
-  .conteudo .nome-personagem {
-    color: #ffffff;
+}
+
+.conteudo .nome-personagem {
+    color: var(--cor-texto-principal); /* Usando variável */
     font-size: 48px;
     font-family: "Secular One";
     font-weight: 400;
     margin-bottom: 20px;
-  }
-  
-  .conteudo .descricao {
-    color: #ffffff;
+}
+
+.conteudo .descricao {
+    color: var(--cor-texto-principal); /* Usando variável */
     font-family: "Rubik";
     font-size: 16px;
     line-height: 24px;
-  }
-  
-  .botoes {
-    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.botoes {
+    background-color: var(--cor-botoes-fundo); /* Usando variável */
     position: fixed;
     top: 0;
     right: 0;
@@ -66,45 +89,50 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    gap: 16px;
-  }
-  
-  .botoes .botao {
+    gap: var(--gap-botoes); /* Usando variável */
+    z-index: 2; /* Garante que os botões fiquem acima do conteúdo */
+}
+
+.botoes .botao {
     border: none;
-    background-color: #000000;
+    background-color: var(--cor-fundo-principal); /* Usando variável */
     width: 90px;
     height: 90px;
     cursor: pointer;
     transition: transform 0.3s ease;
     border-radius: 50%;
-  }
-  
-  .botoes .botao img {
+}
+
+.botoes .botao img {
     border-radius: 50%;
-  }
-  
-  .botoes .botao.selecionado {
+}
+
+.botoes .botao.selecionado {
     transform: scale(1.2);
-    box-shadow: 0 0 10px #d9d9d9;
-  }
-  
-  .botoes .botao.cyberstorm.selecionado {
-    box-shadow: 0 0 10px #47ffc5;
-  }
-  
-  .botoes .botao.codepixie.selecionado {
-    box-shadow: 0 0 10px #9747ff;
-  }
-  
-  .botoes .botao.hexblade.selecionado {
-    box-shadow: 0 0 10px #ffa947;
-  }
-  
-  .botoes .botao.neonpulse.selecionado {
-    box-shadow: 0 0 10px #e4309a;
-  }
-  
-  .botoes .botao.codebreaker.selecionado {
-    box-shadow: 0 0 10px #fff047;
-  }
-  
+    box-shadow: 0 0 10px var(--cor-sombra-padrao); /* Usando variável */
+}
+
+/* Sombras específicas para as linguagens (novo tema) */
+.botoes .botao.javascript.selecionado {
+    box-shadow: 0 0 10px var(--sombra-javascript);
+}
+
+.botoes .botao.python.selecionado {
+    box-shadow: 0 0 10px var(--sombra-python);
+}
+
+.botoes .botao.react.selecionado {
+    box-shadow: 0 0 10px var(--sombra-react);
+}
+
+.botoes .botao.nodejs.selecionado {
+    box-shadow: 0 0 10px var(--sombra-nodejs);
+}
+
+.botoes .botao.csharp.selecionado {
+    box-shadow: 0 0 10px var(--sombra-csharp);
+}
+
+.botoes .botao.sql.selecionado {
+    box-shadow: 0 0 10px var(--sombra-sql);
+}
