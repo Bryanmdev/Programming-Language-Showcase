@@ -1,21 +1,43 @@
 @media (max-width: 770px) {
     main::after {
-        background: linear-gradient(0deg, var(--cor-gradiente-opaco), 57%, rgba(0, 0, 0, 0.1) 70%) no-repeat; /* Usando variável */
+        background: linear-gradient(0deg, var(--cor-gradiente-opaco), 57%, rgba(0, 0, 0, 0.1) 70%) no-repeat;
         width: 100vw;
     }
 
-    main .personagem .imagem {
-        height: 85%;
-        object-position: center;
+    /* **AJUSTES PARA O CONTÊINER DO PERSONAGEM E IMAGEM DE FUNDO** */
+    main .personagem {
+        /* Não aplicar display: flex; aqui! Ele deve ser 'none' por padrão no style.css */
+        height: 100vh; /* Ocupa a altura total da viewport para que a imagem preencha */
+        overflow: hidden; /* Garante que o excesso da imagem seja cortado */
     }
 
+    /* **APLICAR AS REGRAS FLEX APENAS AO PERSONAGEM SELECIONADO** */
+    main .personagem.selecionado {
+        display: flex; /* Sobrescreve display: block do style.css para usar flexbox */
+        justify-content: center; /* Centraliza horizontalmente o conteúdo e a imagem */
+        align-items: center; /* Centraliza verticalmente o conteúdo e a imagem */
+    }
+
+    main .personagem .imagem {
+        width: 100vw; /* Garante que a imagem preencha a largura total da viewport */
+        height: 100vh; /* Garante que a imagem preencha a altura total da viewport */
+        object-fit: cover; /* COBRE o espaço, cortando se necessário */
+        object-position: center; /* Tenta centralizar a parte visível da imagem */
+    }
+
+    /* **AJUSTES PARA O CONTEÚDO (TÍTULO E DESCRIÇÃO)** */
     .conteudo {
-        justify-content: flex-end;
+        position: absolute; /* Mantenha absoluto para posicionamento livre sobre a imagem */
+        top: 25%; /* Ajuste a distância do topo (em percentual do viewport) */
         left: 0;
-        top: unset; /* Remove a propriedade 'top' que puxava o conteúdo para cima */
         max-width: 100vw;
-        padding: var(--padding-conteudo-desktop); /* Usando variável */
-        padding-bottom: 140px; /* Adiciona espaço na parte inferior do conteúdo para os botões */
+        padding: 30px;
+        padding-bottom: 140px; /* Espaço para os botões fixos na parte inferior */
+        justify-content: flex-start;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
     }
     
     .conteudo .nome-personagem {
@@ -24,29 +46,32 @@
 
     .conteudo .descricao {
         max-width: 500px;
+        margin: 0 auto;
     }
 
+    /* **AJUSTES PARA OS BOTÕES** */
     .botoes {
-        flex-direction: row; /* Botões em linha */
-        flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha */
-        justify-content: center; /* Centraliza os botões horizontalmente na tela */
-        align-items: center; /* Alinha os itens verticalmente dentro de cada linha de botões */
-        align-content: flex-start; /* Alinha as linhas de botões do TOPO para BAIXO dentro do contêiner */
+        background-color: var(--cor-botoes-fundo-mobile); /* Fundo translúcido para mobile */
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: flex-end;
         width: 100%;
-        padding: 30px 20px; /* Ajustei o padding para os lados também */
+        padding: 10px 20px;
         position: fixed;
-        bottom: 0; /* Fixa na parte inferior da tela */
-        top: unset; /* Garante que nenhuma propriedade 'top' interfere */
+        bottom: 0;
+        top: unset;
         right: 0;
         left: 0;
-        min-height: unset; /* IMPORTANTE: Remove o min-height: 100vh herdado do desktop */
-        height: auto; /* A altura do contêiner será definida pelo conteúdo (os botões) */
+        min-height: unset;
+        height: auto;
     }
 
     .botoes .botao {
         width: 70px;
         height: 70px;
-        margin: 5px; /* Adiciona espaçamento entre os botões */
+        margin: 5px;
     }
 
     .botoes .botao img {
@@ -56,16 +81,33 @@
 
 @media (max-width: 425px){
     main::after {
-        background: linear-gradient(0deg, var(--cor-gradiente-opaco), 57%, rgba(0, 0, 0, 0.1) 70%) no-repeat; /* Usando variável */
+        background: linear-gradient(0deg, var(--cor-gradiente-opaco), 57%, rgba(0, 0, 0, 0.1) 70%) no-repeat;
         width: 100vw;
     }
+    
+    main .personagem {
+        /* Não aplicar display: flex; aqui! */
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    main .personagem.selecionado {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     main .personagem .imagem{
-        height: auto;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        object-position: center;
     }
 
     .conteudo {
-        top: unset; /* Remove a propriedade 'top' */
-        padding-bottom: 120px; /* Ajuste se necessário para telas muito pequenas */
+        top: 20%; /* Ajusta a distância do topo para telas menores */
+        justify-content: flex-start;
+        padding-bottom: 100px;
     }
 
     .conteudo .nome-personagem {
@@ -73,14 +115,15 @@
     }
 
     .botoes {
-        padding: 20px 10px; /* Ajusta o padding lateral para telas muito pequenas */
+        background-color: var(--cor-botoes-fundo-mobile); /* Fundo translúcido para mobile */
+        padding: 5px 10px;
         bottom: 0;
         top: unset;
         left: 0;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        align-content: flex-start;
+        align-content: flex-end;
         min-height: unset;
         height: auto;
     }
@@ -88,7 +131,7 @@
     .botoes .botao {
         width: 50px;
         height: 50px;
-        margin: 5px; /* Adiciona espaçamento entre os botões */
+        margin: 3px;
     }
 
     .botoes .botao img {

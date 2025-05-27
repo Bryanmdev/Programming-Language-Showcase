@@ -4,10 +4,11 @@
     --cor-texto-principal: #ffffff;
     --cor-gradiente-transparente: rgba(0, 0, 0, 0); /* Transparente */
     --cor-gradiente-opaco: #000; /* Preto opaco */
-    --cor-botoes-fundo: rgba(0, 0, 0, 0.3);
+    --cor-botoes-fundo-translucido: rgba(0, 0, 0, 0.3); /* Translucidez padrão para desktop */
+    --cor-botoes-fundo-mobile: rgba(0, 0, 0, 0.5); /* Translucidez para mobile */
     --cor-sombra-padrao: #d9d9d9;
 
-    /* Sombras das Linguagens (com base na nossa conversa anterior) */
+    /* Sombras das Linguagens */
     --sombra-javascript: #F7DF1E;
     --sombra-python: #3776AB;
     --sombra-react: #61DAFB;
@@ -22,7 +23,7 @@
 }
 
 body {
-    background-color: var(--cor-fundo-principal); /* Usando variável */
+    background-color: var(--cor-fundo-principal);
     overflow: hidden;
 }
 
@@ -33,16 +34,16 @@ main::after {
     left: 0;
     min-height: 100vh;
     width: 80vh;
-    background: linear-gradient(92deg, var(--cor-gradiente-opaco) 25%, var(--cor-gradiente-transparente) 75%) no-repeat; /* Usando variáveis */
+    background: linear-gradient(92deg, var(--cor-gradiente-opaco) 25%, var(--cor-gradiente-transparente) 75%) no-repeat;
 }
 
 main .personagem {
-    display: none;
-    height: 100vh;
+    display: none; /* Por padrão, todos os personagens ficam escondidos */
+    height: 100vh; /* Ocupa a altura total da viewport no desktop */
 }
 
 main .personagem.selecionado {
-    display: block;
+    display: block; /* Apenas o selecionado é visível no desktop */
 }
 
 main .personagem .imagem {
@@ -54,7 +55,7 @@ main .personagem .imagem {
 .conteudo {
     position: absolute;
     top: 0;
-    left: var(--padding-conteudo-left); /* Usando variável */
+    left: var(--padding-conteudo-left);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,7 +65,7 @@ main .personagem .imagem {
 }
 
 .conteudo .nome-personagem {
-    color: var(--cor-texto-principal); /* Usando variável */
+    color: var(--cor-texto-principal);
     font-size: 48px;
     font-family: "Secular One";
     font-weight: 400;
@@ -72,14 +73,14 @@ main .personagem .imagem {
 }
 
 .conteudo .descricao {
-    color: var(--cor-texto-principal); /* Usando variável */
+    color: var(--cor-texto-principal);
     font-family: "Rubik";
     font-size: 16px;
     line-height: 24px;
 }
 
 .botoes {
-    background-color: var(--cor-botoes-fundo); /* Usando variável */
+    background-color: var(--cor-botoes-fundo-translucido); /* Fundo translúcido padrão (desktop) */
     position: fixed;
     top: 0;
     right: 0;
@@ -89,13 +90,13 @@ main .personagem .imagem {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    gap: var(--gap-botoes); /* Usando variável */
-    z-index: 2; /* Garante que os botões fiquem acima do conteúdo */
+    gap: var(--gap-botoes);
+    z-index: 2; /* Garante que os botões fiquem acima do conteúdo e sejam clicáveis */
 }
 
 .botoes .botao {
     border: none;
-    background-color: var(--cor-fundo-principal); /* Usando variável */
+    background-color: var(--cor-fundo-principal);
     width: 90px;
     height: 90px;
     cursor: pointer;
@@ -109,7 +110,7 @@ main .personagem .imagem {
 
 .botoes .botao.selecionado {
     transform: scale(1.2);
-    box-shadow: 0 0 10px var(--cor-sombra-padrao); /* Usando variável */
+    box-shadow: 0 0 10px var(--cor-sombra-padrao);
 }
 
 /* Sombras específicas para as linguagens (novo tema) */
